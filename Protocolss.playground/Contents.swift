@@ -33,3 +33,48 @@ struct Duck: Flyable, Swimmable {
     func fly() { print("Duck is flying") }
     func swim() { print("Duck is swimming") }
 }
+
+// Protocol extension
+
+protocol Printable {
+    var title: String{ get }
+    var subtitle: String{ get }
+    func printPage()
+}
+
+extension Printable {
+    func printPage() {
+        Swift.print("The title is \(title) subtitle is \(subtitle)")
+    }
+    
+}
+
+struct PrintPage: Printable {
+    var title: String
+    var subtitle: String
+    
+    init(title: String, subtitle: String) {
+        self.title = title
+        self.subtitle = subtitle
+    }
+}
+let pp = PrintPage(title: "LOrem Ipsum", subtitle: "Lorem Ipsum lorem soren")
+pp.printPage()
+
+
+// protocol composition with extensions
+
+protocol MediaAsset {
+    func printMediaAsset()
+}
+
+protocol MediaAssetSecond {
+func printMediaAssetSecond()
+}
+
+// protocol composition
+typealias MediaAssetOneandTwo = MediaAsset & MediaAssetSecond
+
+
+
+

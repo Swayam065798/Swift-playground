@@ -2,6 +2,7 @@ import UIKit
 
 var greeting = "Hello, playground"
 // Singleton
+@MainActor
 class APIManager {
     static let shared = APIManager()
     init() {}

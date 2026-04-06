@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - SampleModel
 struct SampleModel: Codable {
-    let members: [Member]
+    let members: [Member]?
     
     enum CodingKeys: String, CodingKey {
         case members
@@ -17,7 +17,7 @@ struct SampleModel: Codable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        members = try container.decodeIfPresent(String.self, forKey: <#T##KeyedDecodingContainer<CodingKeys>.Key#>)
+        members = try container.decodeIfPresent([Member].self, forKey: .members)
     }
 }
 // MARK: - Member
